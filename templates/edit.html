@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Application | CareerTrack</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fc;
+            margin: 0;
+            padding: 40px 20px;
+            color: #202b3c;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 3px 18px #17255415;
+        }
+
+        h1 {
+            color: #172554;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #718096;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 18px 0 8px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dce2ed;
+            border-radius: 7px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .back {
+            display: inline-block;
+            margin-left: 12px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Edit Application</h1>
+        <p>Update your job application details and notes.</p>
+
+        <form method="POST">
+
+            <label>Company Name</label>
+            <input type="text" name="company"
+                   value="{{ application[1] }}" required>
+
+            <label>Job Role</label>
+            <input type="text" name="role"
+                   value="{{ application[2] }}" required>
+
+            <label>Application Status</label>
+            <select name="status">
+                <option value="Applied"
+                    {% if application[3] == 'Applied' %}selected{% endif %}>
+                    Applied
+                </option>
+
+                <option value="Interview"
+                    {% if application[3] == 'Interview' %}selected{% endif %}>
+                    Interview
+                </option>
+
+                <option value="Offer"
+                    {% if application[3] == 'Offer' %}selected{% endif %}>
+                    Offer
+                </option>
+            </select>
+
+            <label>Notes</label>
+            <textarea name="notes" rows="4"
+                placeholder="Add interview feedback or follow-up notes...">{{ application[5] or '' }}</textarea>
+
+            <button type="submit">Save Changes</button>
+            <a class="back" href="/">Cancel</a>
+
+        </form>
+    </div>
+
+</body>
+</html>
+
+

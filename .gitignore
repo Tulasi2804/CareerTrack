@@ -1,0 +1,4 @@
+careertrack.db
+templates/venv/
+__pycache__/
+*.pyc
